@@ -8,43 +8,53 @@ import { useParams } from "react-router-dom";
 export function EditUser({ users, setUsers }) {
   const { id } = useParams();
   const user = users[id];
-  const [name, setName] = useState(user.name);
-  const [username, setUsername] = useState(user.username);
-  const [age, setAge] = useState(user.age);
-  const [gender, setGender] = useState(user.gender);
-  const [email, setEmail] = useState(user.email);
-  const [image, setImage] = useState(user.image);
+  const [name, setName] = useState(user[0].name);
+  const [username, setUsername] = useState(user[0].username);
+  const [age, setAge] = useState(user[0].age);
+  const [gender, setGender] = useState(user[0].gender);
+  const [email, setEmail] = useState(user[0].email);
+  const [image, setImage] = useState(user[0].image);
   const navigate = useNavigate();
 
+  const saveEditedValues = () => {
+    const usersCopy = [...users];
+
+    let filtered = usersCopy[id];
+    filtered[0].name = name;
+    filtered[0].username = username;
+    filtered[0].age = age;
+    filtered[0].gender = gender;
+    filtered[0].email = email;
+    filtered[0].image = image;
+
+    console.log("after edit", usersCopy);
+    setUsers(usersCopy);
+    navigate(`/aboutUsers/${id}`);
+
+  };
   const editName = (e) => {
     setName(e.target.value);
-    const updated_name = name;
-    user.name = updated_name;
+    
   };
   const editUserName = (event) => {
     setUsername(event.target.value);
-    const updated_username = username;
-    user.username = updated_username;
+    
   };
   const editAge = (e) => {
     setAge(e.target.value);
-    const updated_age = age;
-    user.age = updated_age;
+   
   };
   const editGender = (e) => {
     setGender(e.target.value);
-    const updated_gender = gender;
-    user.gender = updated_gender;
+   
   };
   const editEmail = (e) => {
     setEmail(e.target.value);
-    const updated_email = email;
-    user.email = updated_email;
+   
   };
   const editImage = (e) => {
     setImage(e.target.value);
-    const updated_image = image;
-    user.image = updated_image;
+  
   };
   return (
     <div className="textField-edit">
@@ -122,9 +132,8 @@ export function EditUser({ users, setUsers }) {
           }}
           onClick={(event) => {
             event.preventDefault();
-            setUsers([...users]);
-            setName("");
-            navigate(`/aboutUsers/${id}`);
+            saveEditedValues();
+            console.log("books");
           }}
         >
           Confirm

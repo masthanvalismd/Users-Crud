@@ -15,7 +15,7 @@ import "./App.css";
 export default function App() {
   const usersList = [
     {
-      id: 0,
+      id: 1,
       name: "SMD",
       username: "smd@123",
       age: 23,
@@ -23,29 +23,9 @@ export default function App() {
       email: "smd@gmail.com",
       image:
         "https://bestprofilepictures.com/wp-content/uploads/2021/04/Cool-Profile-Picture.jpg",
-    },
-    {
-      id: 1,
-      name: "VALI",
-      username: "vali123",
-      age: 22,
-      gender: "Male",
-      email: "vali@gmail.com",
-      image:
-        "https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg",
     },
     {
       id: 2,
-      name: "SMD",
-      username: "smd@123",
-      age: 23,
-      gender: "Male",
-      email: "smd@gmail.com",
-      image:
-        "https://bestprofilepictures.com/wp-content/uploads/2021/04/Cool-Profile-Picture.jpg",
-    },
-    {
-      id: 3,
       name: "VALI",
       username: "vali123",
       age: 22,
@@ -55,7 +35,7 @@ export default function App() {
         "https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg",
     },
     {
-      id: 4,
+      id: 3,
       name: "SMD",
       username: "smd@123",
       age: 23,
@@ -65,7 +45,27 @@ export default function App() {
         "https://bestprofilepictures.com/wp-content/uploads/2021/04/Cool-Profile-Picture.jpg",
     },
     {
+      id: 4,
+      name: "VALI",
+      username: "vali123",
+      age: 22,
+      gender: "Male",
+      email: "vali@gmail.com",
+      image:
+        "https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg",
+    },
+    {
       id: 5,
+      name: "SMD",
+      username: "smd@123",
+      age: 23,
+      gender: "Male",
+      email: "smd@gmail.com",
+      image:
+        "https://bestprofilepictures.com/wp-content/uploads/2021/04/Cool-Profile-Picture.jpg",
+    },
+    {
+      id: 6,
       name: "VALI",
       username: "vali123",
       age: 22,
@@ -107,6 +107,14 @@ export default function App() {
             >
               Add Users
             </Button>
+            <Button
+              color="inherit"
+              onClick={() => {
+                navigate("/userprofiles");
+              }}
+            >
+              Profiles
+            </Button>
           </Toolbar>
         </AppBar>
       </div>
@@ -124,6 +132,10 @@ export default function App() {
         />
         <Route
           path="/addUsers"
+          element={<AddUser users={users} setUsers={setUsers} />}
+        />
+        <Route
+          path="/userprofiles"
           element={<AddUser users={users} setUsers={setUsers} />}
         />
       </Routes>
