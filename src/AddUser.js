@@ -5,8 +5,7 @@ import TextField from "@mui/material/TextField";
 import { useState } from "react";
 
 export function AddUser({ users, setUsers }) {
-  // const [usersLists, setUsersLists] = useState([])
-  //  const[id,setId]= useState(null)
+
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [age, setAge] = useState("");
@@ -75,7 +74,7 @@ export function AddUser({ users, setUsers }) {
         color: "#FFFFFF",
         marginRight: "40px",
       }}
-          onClick={() => navigate("/aboutUsers")}>Back</Button>
+          onClick={() => navigate("/users")}>Back</Button>
         <Button
           variant="outlined"
           style={{ backgroundColor: "blue", color: "#FFFFFF" ,marginLeft: "20px"}}
@@ -92,7 +91,7 @@ export function AddUser({ users, setUsers }) {
             // console.log(newUser);
             setUsers([...users, newUser]);
             setName("");
-            navigate("/aboutUsers");
+            navigate("/users");
           }}
         >
           Add User

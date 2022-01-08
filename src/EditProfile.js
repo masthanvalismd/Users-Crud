@@ -5,11 +5,15 @@ import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import { useParams } from "react-router-dom";
 
-export function EditUser({ users, setUsers }) {
+export function EditProfile({ users, setUsers }) {
   const { id } = useParams();
   const user = users[id];
   const [name, setName] = useState(user.name);
   const [username, setUsername] = useState(user.username);
+  const [age, setAge] = useState(user.age);
+  const [gender, setGender] = useState(user.gender);
+  const [email, setEmail] = useState(user.email);
+  const [image, setImage] = useState(user.image);
   const navigate = useNavigate();
 
   const saveEditedValues = () => {
@@ -18,11 +22,14 @@ export function EditUser({ users, setUsers }) {
     let filtered = usersCopy[id];
     filtered.name = name;
     filtered.username = username;
-   
+    filtered.age = age;
+    filtered.gender = gender;
+    filtered.email = email;
+    filtered.image = image;
 
     console.log("after edit", usersCopy);
     setUsers(usersCopy);
-    navigate("/users");
+    navigate(`/profile/${id}`);
 
   };
   const editName = (e) => {
@@ -33,10 +40,25 @@ export function EditUser({ users, setUsers }) {
     setUsername(event.target.value);
     
   };
- 
+  const editAge = (e) => {
+    setAge(e.target.value);
+   
+  };
+  const editGender = (e) => {
+    setGender(e.target.value);
+   
+  };
+  const editEmail = (e) => {
+    setEmail(e.target.value);
+   
+  };
+  const editImage = (e) => {
+    setImage(e.target.value);
+  
+  };
   return (
     <div className="textField-edit">
-      <h2 className="textField-h2">Form to Edit the User Details</h2>
+      <h2 className="textField-h2">Form to Edit the Profile Details</h2>
       <TextField
         label="Enter a Name"
         variant="standard"
@@ -54,7 +76,39 @@ export function EditUser({ users, setUsers }) {
       />
       <br />
 
-    
+      <TextField
+        label="Enter Age"
+        variant="standard"
+        style={{ width: "15%", margin: "0px 8px", paddingLeft: "5px" }}
+        value={age}
+        onChange={editAge}
+      />
+      <br />
+
+      <TextField
+        label="Enter Gender"
+        variant="standard"
+        style={{ width: "15%", margin: "0px 8px", paddingLeft: "5px" }}
+        value={gender}
+        onChange={editGender}
+      />
+      <br />
+
+      <TextField
+        label="Enter email"
+        variant="standard"
+        style={{ width: "15%", margin: "0px 8px", paddingLeft: "5px" }}
+        value={email}
+        onChange={editEmail}
+      />
+      <br />
+      <TextField
+        label="Enter Image URL"
+        variant="standard"
+        style={{ width: "15%", margin: "0px 8px", paddingLeft: "5px" }}
+        value={image}
+        onChange={editImage}
+      />
       <br />
       <br />
 
@@ -65,7 +119,7 @@ export function EditUser({ users, setUsers }) {
             color: "#FFFFFF",
             marginRight: "20px",
           }}
-          onClick={() => navigate("/users")}
+          onClick={() => navigate(`/profile/${id}`)}
         >
           Back
         </Button>

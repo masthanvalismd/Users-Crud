@@ -10,7 +10,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import IconButton from "@mui/material/IconButton";
 
 
-export function UserInfo({ users }) {
+export function UserProfiles({ users }) {
   // console.log(users);
   const navigate = useNavigate();
 
@@ -34,12 +34,12 @@ export function UserInfo({ users }) {
           <h4><span>Email   : </span>{user.email}</h4>
         </CardContent>
         <CardActions>
-          <Button size="small" onClick={() => navigate("/aboutUsers")}>Back</Button>
+          <Button size="small" onClick={() => navigate("/users")}>Back</Button>
           <IconButton
-                      onClick={() => navigate(`/aboutUsers/edit/${id}`)}
+                      onClick={() => navigate(`/edit-profile/${id}`)}
                       color="warning"
-                      aria-label="editUsers"
-                      title="Edit User"
+                      aria-label="editPrifile"
+                      title="Edit Profile"
                     >
                       <EditIcon />
                     </IconButton>

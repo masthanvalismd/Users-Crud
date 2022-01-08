@@ -7,7 +7,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import EditIcon from "@mui/icons-material/Edit";
 import InfoIcon from "@mui/icons-material/Info";
+
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
 
@@ -34,20 +36,27 @@ export function UserDetails({ users, setUsers }) {
                   <TableCell>{id}</TableCell>
                   <TableCell>{name}</TableCell>
                   <TableCell>{username}</TableCell>
-                  <div className="row-actions">
-                    <TableCell>
+                 
+                    <TableCell className="row-actions">
                       <IconButton
-                        onClick={() => navigate(`/aboutUsers/${id}`)}
+                        onClick={() => navigate(`/edit-user/${id}`)}
+                        color="warning"
+                        aria-label="aboutUsers"
+                        title="Edit User"
+                      >
+                        <EditIcon />
+                      </IconButton>
+                      <IconButton
+                        onClick={() => navigate(`/profile/${id}`)}
                         color="primary"
                         aria-label="aboutUsers"
-                        title="User Info"
+                              title="User Profile"
+                              style={{paddingLeft:"2rem",paddingRight:"2rem"}}
                       >
                         <InfoIcon />
                       </IconButton>
-                    </TableCell>
-
-                    <TableCell>
-                      {" "}
+                
+                    
                       <IconButton
                         onClick={() => deleteuser(id)}
                         color="error"
@@ -57,7 +66,7 @@ export function UserDetails({ users, setUsers }) {
                         <DeleteIcon />
                       </IconButton>
                     </TableCell>
-                  </div>
+                  
                 </TableRow>
               );
             })}
