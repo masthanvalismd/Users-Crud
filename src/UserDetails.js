@@ -10,6 +10,7 @@ import Paper from "@mui/material/Paper";
 import EditIcon from "@mui/icons-material/Edit";
 import InfoIcon from "@mui/icons-material/Info";
 
+
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
 
@@ -39,7 +40,7 @@ export function UserDetails({ users, setUsers }) {
                  
                     <TableCell className="row-actions">
                       <IconButton
-                        onClick={() => navigate(`/edit-user/${id}`)}
+                        onClick={() => navigate(`/edit-user/${index}`)}
                         color="warning"
                         aria-label="aboutUsers"
                         title="Edit User"
@@ -47,7 +48,7 @@ export function UserDetails({ users, setUsers }) {
                         <EditIcon />
                       </IconButton>
                       <IconButton
-                        onClick={() => navigate(`/profile/${id}`)}
+                        onClick={() => navigate(`/profile/${index}`)}
                         color="primary"
                         aria-label="aboutUsers"
                               title="User Profile"

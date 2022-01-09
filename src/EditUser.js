@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 export function EditUser({ users, setUsers }) {
   const { id } = useParams();
   const user = users[id];
+  console.log(users);
   const [name, setName] = useState(user.name);
   const [username, setUsername] = useState(user.username);
   const navigate = useNavigate();
@@ -18,22 +19,18 @@ export function EditUser({ users, setUsers }) {
     let filtered = usersCopy[id];
     filtered.name = name;
     filtered.username = username;
-   
 
     console.log("after edit", usersCopy);
     setUsers(usersCopy);
     navigate("/users");
-
   };
   const editName = (e) => {
     setName(e.target.value);
-    
   };
   const editUserName = (event) => {
     setUsername(event.target.value);
-    
   };
- 
+
   return (
     <div className="textField-edit">
       <h2 className="textField-h2">Form to Edit the User Details</h2>
@@ -54,7 +51,6 @@ export function EditUser({ users, setUsers }) {
       />
       <br />
 
-    
       <br />
       <br />
 
@@ -79,7 +75,6 @@ export function EditUser({ users, setUsers }) {
           onClick={(event) => {
             event.preventDefault();
             saveEditedValues();
-            console.log("books");
           }}
         >
           Confirm
