@@ -5,7 +5,6 @@ import TextField from "@mui/material/TextField";
 import { useState } from "react";
 
 export function AddUser({ users, setUsers }) {
-
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [age, setAge] = useState("");
@@ -22,7 +21,7 @@ export function AddUser({ users, setUsers }) {
         value={name}
         onChange={(event) => setName(event.target.value)}
       />
-      <br/>
+      <br />
       <TextField
         label="Enter Username"
         variant="standard"
@@ -30,8 +29,8 @@ export function AddUser({ users, setUsers }) {
         value={username}
         onChange={(event) => setUsername(event.target.value)}
       />
-      <br/>
-      
+      <br />
+
       <TextField
         label="Enter Age"
         variant="standard"
@@ -39,8 +38,8 @@ export function AddUser({ users, setUsers }) {
         value={age}
         onChange={(event) => setAge(event.target.value)}
       />
-      <br/>
-      
+      <br />
+
       <TextField
         label="Enter Gender"
         variant="standard"
@@ -48,15 +47,16 @@ export function AddUser({ users, setUsers }) {
         value={gender}
         onChange={(event) => setGender(event.target.value)}
       />
-      <br/>
-      
+      <br />
+
       <TextField
         label="Enter email"
         variant="standard"
         style={{ width: "15%", margin: "0px 8px", paddingLeft: "5px" }}
         value={email}
         onChange={(event) => setEmail(event.target.value)}
-      /><br/>
+      />
+      <br />
       <TextField
         label="Enter Image URL"
         variant="standard"
@@ -64,29 +64,36 @@ export function AddUser({ users, setUsers }) {
         value={image}
         onChange={(event) => setImage(event.target.value)}
       />
-      <br/>
-      <br/>
-      
+      <br />
+      <br />
+
       <div className="btn">
-        <Button 
-      style={{
-        backgroundColor: "crimson",
-        color: "#FFFFFF",
-        marginRight: "40px",
-      }}
-          onClick={() => navigate("/users")}>Back</Button>
+        <Button
+          style={{
+            backgroundColor: "crimson",
+            color: "#FFFFFF",
+            marginRight: "40px",
+          }}
+          onClick={() => navigate("/users")}
+        >
+          Back
+        </Button>
         <Button
           variant="outlined"
-          style={{ backgroundColor: "blue", color: "#FFFFFF" ,marginLeft: "20px"}}
+          style={{
+            backgroundColor: "blue",
+            color: "#FFFFFF",
+            marginLeft: "20px",
+          }}
           onClick={() => {
             const newUser = {
-              id: users.length,
+              id: users.length + 1,
               name,
               username,
               age,
               gender,
               email,
-              image
+              image,
             };
             // console.log(newUser);
             setUsers([...users, newUser]);
@@ -96,7 +103,6 @@ export function AddUser({ users, setUsers }) {
         >
           Add User
         </Button>
-
       </div>
     </div>
   );
